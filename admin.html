@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | CampusBus</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="admin-body">
+    <header class="app-header">
+      <div class="brand small-brand">
+        <img src="./assets/logo.svg" alt="CampusBus logo" />
+        <div>
+          <span class="brand-name">CampusBus</span>
+        </div>
+      </div>
+
+      <nav class="top-actions" aria-label="Admin navigation">
+        <a href="./index.html">Home</a>
+        <a href="./student.html">Student View</a>
+      </nav>
+    </header>
+
+    <main class="admin-page">
+      <section id="adminLoginSection" class="panel auth-panel">
+        <h1>Admin Login</h1>
+        <p class="auth-subtitle">Manage buses, routes, stops, and live tracking.</p>
+
+        <form id="adminLoginForm" class="auth-form">
+          <label for="adminEmail">Email</label>
+          <input id="adminEmail" type="email" placeholder="admin@campus.edu" required />
+
+          <label for="adminPassword">Password</label>
+          <input id="adminPassword" type="password" placeholder="Enter your password" required />
+
+          <button type="submit" class="primary-btn full-width">Login</button>
+        </form>
+
+        <div id="adminAuthMessage" class="message info" aria-live="polite"></div>
+      </section>
+
+      <section id="adminDashboard" class="dashboard hidden">
+        <div class="admin-grid">
+          <div class="panel admin-form-card">
+            <h2>Add / Update Bus</h2>
+            <form id="busForm" class="stack-form">
+              <input id="busIdInput" type="text" placeholder="Bus ID (example: BUS-102)" required />
+              <input id="busNumberInput" type="text" placeholder="Bus Number (example: 102)" required />
+              <input id="routeNameInput" type="text" placeholder="Route Name" required />
+              <input id="startPointInput" type="text" placeholder="Starting Point" required />
+              <input id="destinationInput" type="text" placeholder="Destination" required />
+              <button type="submit" class="primary-btn full-width">Save Bus</button>
+            </form>
+          </div>
+
+          <div class="panel admin-form-card">
+            <h2>Route & Stops</h2>
+            <form id="routeForm" class="stack-form">
+              <input id="routeBusIdInput" type="text" placeholder="Bus ID to update" required />
+              <textarea
+                id="routePointsInput"
+                rows="6"
+                placeholder='Route points as JSON: [{"lat":12.97,"lng":77.59},{"lat":12.98,"lng":77.60}]'
+              ></textarea>
+              <textarea
+                id="stopsInput"
+                rows="5"
+                placeholder='Stops as JSON: [{"name":"Main Gate","lat":12.97,"lng":77.59}]'
+              ></textarea>
+              <button type="submit" class="primary-btn full-width">Save Route & Stops</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel admin-table-card">
+          <div class="section-heading">
+            <h2>Active Buses</h2>
+            <span class="route-badge">Realtime</span>
+          </div>
+          <div id="adminBusList" class="bus-table"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    <script src="./js/firebase-config.js"></script>
+    <script src="./js/admin.js"></script>
+  </body>
+</html>

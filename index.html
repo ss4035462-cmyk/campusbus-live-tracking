@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusBus | Track Your Bus Live</title>
+    <meta
+      name="description"
+      content="CampusBus helps university students track the live location of college buses using real-time updates."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="home-page">
+    <header class="topbar">
+      <div class="brand">
+        <img src="./assets/logo.svg" alt="CampusBus logo" />
+        <div>
+          <span class="brand-name">CampusBus</span>
+          <small>University Transport</small>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="./student.html">Student Dashboard</a>
+        <a href="./driver.html">Driver Login</a>
+        <a href="./admin.html">Admin</a>
+      </nav>
+    </header>
+
+    <main class="hero-section">
+      <div class="hero-copy">
+        <span class="eyebrow">Smart campus commutes</span>
+        <h1>CampusBus</h1>
+        <h2>Track Your Bus Live</h2>
+        <p>
+          See where your college bus is right now, check the route, and know your
+          estimated arrival time with a simple live tracking dashboard.
+        </p>
+
+        <div class="hero-actions">
+          <a href="./student.html" class="primary-btn">Track Bus</a>
+          <a href="./driver.html" class="secondary-btn">Driver Login</a>
+        </div>
+
+        <div class="how-it-works">
+          <h3>How it works</h3>
+          <ol>
+            <li>Drivers share their location from the bus.</li>
+            <li>The system updates the live position in real time.</li>
+            <li>Students track the route and arrival information instantly.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Bus tracking preview card">
+        <div class="preview-card">
+          <div class="preview-topbar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+
+          <div class="preview-map">
+            <div class="route-line"></div>
+            <div class="route-stop stop-a"></div>
+            <div class="route-stop stop-b"></div>
+            <div class="route-stop stop-c"></div>
+            <div class="bus-icon">🚌</div>
+          </div>
+
+          <div class="preview-status">
+            <div>
+              <span class="label">Selected Route</span>
+              <strong>North Loop</strong>
+            </div>
+            <div>
+              <span class="label">Status</span>
+              <strong class="live-indicator">Live</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

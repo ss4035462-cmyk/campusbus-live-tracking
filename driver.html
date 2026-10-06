@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driver Login | CampusBus</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="auth-body">
+    <header class="app-header">
+      <div class="brand small-brand">
+        <img src="./assets/logo.svg" alt="CampusBus logo" />
+        <div>
+          <span class="brand-name">CampusBus</span>
+        </div>
+      </div>
+
+      <nav class="top-actions" aria-label="Driver navigation">
+        <a href="./index.html">Home</a>
+        <a href="./student.html">Student View</a>
+      </nav>
+    </header>
+
+    <main class="auth-page">
+      <section id="loginSection" class="panel auth-panel">
+        <h1>Driver Login</h1>
+        <p class="auth-subtitle">Authorized drivers can share their location in real time.</p>
+
+        <form id="driverLoginForm" class="auth-form">
+          <label for="driverEmail">Email</label>
+          <input id="driverEmail" type="email" placeholder="driver@campus.edu" required />
+
+          <label for="driverPassword">Password</label>
+          <input id="driverPassword" type="password" placeholder="Enter your password" required />
+
+          <button type="submit" class="primary-btn full-width">Login</button>
+        </form>
+
+        <div id="driverAuthMessage" class="message info" aria-live="polite"></div>
+      </section>
+
+      <section id="driverDashboard" class="dashboard hidden">
+        <div class="toolbar">
+          <label for="driverBusSelect" class="field-label">Assigned Bus</label>
+          <select id="driverBusSelect" class="select-box">
+            <option value="">Select your bus</option>
+          </select>
+          <button id="toggleSharingBtn" class="primary-btn" type="button">Start Sharing</button>
+        </div>
+
+        <div class="status-row">
+          <span id="driverStatusBadge" class="status-pill offline">Offline</span>
+          <span id="driverLocationStatus">Waiting for GPS permission</span>
+        </div>
+
+        <div class="driver-layout">
+          <div id="driverMap" class="leaflet-map" aria-label="Driver current location map"></div>
+
+          <aside class="panel location-card">
+            <h2>Current Location</h2>
+            <ul class="location-list">
+              <li><span>Latitude</span><strong id="driverLatValue">--</strong></li>
+              <li><span>Longitude</span><strong id="driverLngValue">--</strong></li>
+              <li><span>Bus ID</span><strong id="driverBusIdValue">--</strong></li>
+              <li><span>Status</span><strong id="driverOnlineValue">Offline</strong></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    <script src="./js/firebase-config.js"></script>
+    <script src="./js/driver.js"></script>
+  </body>
+</html>
