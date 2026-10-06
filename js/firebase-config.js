@@ -1,6 +1,6 @@
-// This file is intentionally a placeholder configuration file.
-// Add your Firebase credentials here before using the website.
-// You can copy the values from your Firebase project settings.
+// This file holds the Firebase configuration required by the app.
+// Replace these values with the credentials from your own Firebase project.
+// This project intentionally keeps placeholders so no private keys are committed.
 
 window.firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -12,12 +12,14 @@ window.firebaseConfig = {
   appId: "YOUR_APP_ID"
 };
 
+// Allowed account emails for admin and driver access.
+// These are easy to update if you want to restrict login to your university emails.
 window.appSettings = {
   allowedAdminEmails: ["admin@campusbus.com"],
   allowedDriverEmails: ["driver@campusbus.com"]
 };
 
-// Helper: make sure the config is valid before trying to connect to Firebase.
+// Check that Firebase config was filled in by the developer.
 window.isFirebaseConfigured = function () {
   const config = window.firebaseConfig || {};
 
@@ -28,4 +30,17 @@ window.isFirebaseConfigured = function () {
     typeof config.projectId === "string" &&
     !config.projectId.includes("YOUR_")
   );
+};
+
+// Helper for safer access to the Firebase database.
+window.getFirebaseDatabase = function () {
+  if (!window.isFirebaseConfigured || !window.isFirebaseConfigured()) {
+    throw new Error("Firebase config is missing. Add your project credentials first.");
+  }
+
+  if (!firebase || !firebase.database) {
+    throw new Error("Firebase database SDK is not available.");
+  }
+
+  return firebase.database();
 };
